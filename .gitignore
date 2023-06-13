@@ -1,0 +1,17 @@
+
+*.props
+*.cache
+*.vsidx
+*.cache
+*.cache
+obj/Debug/net6.0/Projects.assets.cache
+obj/Debug/net6.0/Projects.csproj.AssemblyReference.cache
+obj/project.assets.json
+obj/project.nuget.cache
+obj/Projects.csproj.nuget.dgspec.json
+obj/Projects.csproj.nuget.g.props
+obj/Projects.csproj.nuget.g.targets
+*.cache
+*.props
+.vs/Projects/v17/.suo
+*.vsidx
