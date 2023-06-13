@@ -1,8 +1,11 @@
 
 
+using Microsoft.EntityFrameworkCore;
 using Projects.Data;
+using Projects.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 
 builder.Services.AddControllers();
@@ -11,7 +14,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ProjectsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
-//builder.Services.AddScoped<ICustomerService, CustomerService>();
+
+//mapping dependency injection
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddControllers().AddXmlDataContractSerializerFormatters();
 var app = builder.Build();
 
@@ -21,6 +28,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//seeding the database with default data
+ProjectsDbInitializer.Seed(app);
 
 app.UseHttpsRedirection();
 
